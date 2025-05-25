@@ -31,7 +31,7 @@ describe('API functions', () => {
     const data = { title: 'Test', description: 'Desc' };
     const response = await createVotingAgenda(data);
 
-    expect(mockedPost).toHaveBeenCalledWith('/api/v1/voting-agenda', data);
+    expect(mockedPost).toHaveBeenCalledWith('/api/v1/voting-agendas', data);
     expect(response.data).toEqual({ id: 1 });
   });
 

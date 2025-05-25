@@ -4,7 +4,7 @@ export const validateCpf = (cpf: string) =>
   axios.get(`/api/v1/cpf-validation/${cpf}`);
 
 export const createVotingAgenda = (data: { title: string; description: string }) =>
-  axios.post('/api/v1/voting-agenda', data);
+  axios.post('/api/v1/voting-agendas', data);
 
 export const getVotingAgendaById = async (id: string) =>{
   const response = await axios.get(`api/v1/voting-agendas/${id}`);
