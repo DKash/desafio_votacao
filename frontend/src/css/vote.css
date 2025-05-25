@@ -1,0 +1,49 @@
+.vote-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #9c7df6;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #9c7df6;
+  outline: none;
+}
+
+.button {
+  padding: 8px 20px;
+  background-color: #9c7df6;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #7a5de0;
+}
+
+.message {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #2a9d8f;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CpfValidationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">desafio_votacao</a> &gt; <a href="index.source.html" class="el_package">com.audry.desafio_votacao.services</a> &gt; <span class="el_source">CpfValidationService.java</span></div><h1>CpfValidationService.java</h1><pre class="source lang-java linenums">package com.audry.desafio_votacao.services;
+
+import com.audry.desafio_votacao.entities.CpfStatusEnum;
+import com.audry.desafio_votacao.dto.CpfStatusDto;
+import com.audry.desafio_votacao.exception.InvalidCpfException;
+
+import org.springframework.stereotype.Service;
+
+import java.util.Random;
+
+@Service
+/**
+ * Fake Client para validação de CPF.
+ * Este serviço simula a validação de um CPF e retorna um status de votação.
+ */
+<span class="fc" id="L16">public class CpfValidationService {</span>
+
+<span class="fc" id="L18">    private final Random random = new Random();</span>
+
+    /**
+     * Valida o CPF e retorna o status de votação.
+     *
+     * @param cpf CPF a ser validado
+     * @return Status de votação
+     */
+    public CpfStatusDto validateCpf(String cpf) {
+        // Gera 30% de CPFs inválidos
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (random.nextInt(10) &lt; 3) {</span>
+<span class="fc" id="L29">            throw new InvalidCpfException(cpf);</span>
+        }
+
+<span class="fc" id="L32">        boolean ableToVote = random.nextBoolean();</span>
+<span class="fc" id="L33">        return CpfStatusDto.builder()</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">                .status(ableToVote ? CpfStatusEnum.ABLE_TO_VOTE : CpfStatusEnum.UNABLE_TO_VOTE)</span>
+<span class="fc" id="L35">                .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VotingSessionService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">desafio_votacao</a> &gt; <a href="index.source.html" class="el_package">com.audry.desafio_votacao.services</a> &gt; <span class="el_source">VotingSessionService.java</span></div><h1>VotingSessionService.java</h1><pre class="source lang-java linenums">package com.audry.desafio_votacao.services;
+
+import com.audry.desafio_votacao.dto.VotingSessionDto;
+import com.audry.desafio_votacao.entities.VotingAgenda;
+import com.audry.desafio_votacao.entities.VotingSession;
+import com.audry.desafio_votacao.repository.VotingSessionRepository;
+import com.audry.desafio_votacao.exception.VotingSessionAlreadyExistsException;
+import com.audry.desafio_votacao.exception.VotingSessionClosedException;
+import com.audry.desafio_votacao.exception.VotingSessionNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L18">@RequiredArgsConstructor</span>
+public class VotingSessionService {
+
+    private final VotingSessionRepository votingSessionRepository;
+    private final VotingAgendaService votingAgendaService;
+
+    /**
+     * Abre uma sessão de votação para a pauta informada.
+     */
+    public VotingSession openVotingSession(VotingSessionDto dto) {
+<span class="fc" id="L28">        VotingAgenda votingAgenda = votingAgendaService.findById(dto.getVotingAgendaId());</span>
+<span class="fc" id="L29">        Optional&lt;VotingSession&gt; existingSession = votingSessionRepository.findByVotingAgenda(votingAgenda);</span>
+        
+<span class="fc" id="L31">        LocalDateTime now = LocalDateTime.now();</span>
+        // Valida se ja existe uma sessao de votacao aberta para a pauta
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (existingSession.isPresent()) {</span>
+            // A sessao ja existe, mas esta fechada
+<span class="fc bfc" id="L35" title="All 4 branches covered.">            if (existingSession.get().isFinished() || existingSession.get().getDtEnd().isAfter(now)) {</span>
+<span class="fc" id="L36">                throw new VotingSessionClosedException();</span>
+            }
+<span class="fc" id="L38">            throw new VotingSessionAlreadyExistsException();</span>
+        }
+
+<span class="fc bfc" id="L41" title="All 4 branches covered.">        int duration = (dto.getDuration() == null || dto.getDuration() &lt;= 0) ? 1 : dto.getDuration();</span>
+
+<span class="fc" id="L43">        VotingSession session = VotingSession.builder()</span>
+<span class="fc" id="L44">                .votingAgenda(votingAgenda)</span>
+<span class="fc" id="L45">                .dtStart(now)</span>
+<span class="fc" id="L46">                .dtEnd(now.plusMinutes(duration))</span>
+<span class="fc" id="L47">                .finished(false)</span>
+<span class="fc" id="L48">                .build();</span>
+
+<span class="fc" id="L50">        return votingSessionRepository.save(session);</span>
+    }
+
+    /**
+     * Finaliza uma sessao de votacao
+     */
+    public VotingSession finishVotingSession(VotingSession session) {
+<span class="fc" id="L57">        return votingSessionRepository.save(session);</span>
+    }
+
+    public VotingSession findByVotingAgenda(UUID votingAgendaId) {
+<span class="fc" id="L61">        VotingAgenda votingAgenda = votingAgendaService.findById(votingAgendaId);</span>
+<span class="fc" id="L62">        return votingSessionRepository.findByVotingAgenda(votingAgenda)</span>
+<span class="fc" id="L63">                .orElseThrow(() -&gt; new VotingSessionNotFoundException(votingAgendaId));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

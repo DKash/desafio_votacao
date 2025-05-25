@@ -1,0 +1,8 @@
+com\audry\desafio_votacao\services\VotingAgendaServiceTest.class
+com\audry\desafio_votacao\controller\CpfValidationControllerTest.class
+com\audry\desafio_votacao\controller\VotingAgendaControllerTest.class
+com\audry\desafio_votacao\controller\VotingSessionControllerTest.class
+com\audry\desafio_votacao\services\CpfValidationServiceTest.class
+com\audry\desafio_votacao\services\VoteServiceTest.class
+com\audry\desafio_votacao\services\VotingSessionServiceTest.class
+com\audry\desafio_votacao\controller\VoteControllerTest.class

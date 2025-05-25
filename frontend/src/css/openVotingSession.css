@@ -1,0 +1,73 @@
+.session-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.session-section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #9c7df6;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #9c7df6;
+  outline: none;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #9c7df6;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #7a5de0;
+}
+
+.divider {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.message {
+  margin-top: 1rem;
+  color: #2a9d8f;
+  font-weight: 600;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #e63946;
+  font-weight: 600;
+}
+
+.session-info {
+  margin-top: 1rem;
+  background-color: #f5f5fa;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}

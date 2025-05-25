@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VotingAgendaController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">desafio_votacao</a> &gt; <a href="index.source.html" class="el_package">com.audry.desafio_votacao.controller</a> &gt; <span class="el_source">VotingAgendaController.java</span></div><h1>VotingAgendaController.java</h1><pre class="source lang-java linenums">package com.audry.desafio_votacao.controller;
+
+import com.audry.desafio_votacao.dto.VotingAgendaDto;
+import com.audry.desafio_votacao.entities.VotingAgenda;
+import com.audry.desafio_votacao.services.VotingAgendaService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping(&quot;/api/v1/voting-agendas&quot;)
+<span class="fc" id="L14">@RequiredArgsConstructor</span>
+public class VotingAgendaController {
+
+    private final VotingAgendaService votingAgendaService;
+
+    @PostMapping
+    public ResponseEntity&lt;VotingAgenda&gt; addVotingAgenda(@RequestBody VotingAgendaDto dto) {
+<span class="fc" id="L21">        return ResponseEntity.ok(votingAgendaService.addVotingAgenda(dto));</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;VotingAgenda&gt; getVotingAgendaById(@PathVariable UUID id) {
+<span class="fc" id="L26">        return ResponseEntity.ok(votingAgendaService.findById(id));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

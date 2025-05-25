@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.audry.desafio_votacao.controller.CpfValidationControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.425 s - in com.audry.desafio_votacao.controller.CpfValidationControllerTest

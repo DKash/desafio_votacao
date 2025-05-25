@@ -1,0 +1,77 @@
+.voting-manager-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #1b427e;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #9c7df6;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #9c7df6;
+  border-radius: 8px;
+  outline-offset: 2px;
+  outline-color: #9c7df6;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+.textarea-field {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.action-button {
+  padding: 12px 28px;
+  background-color: #9c7df6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.action-button:disabled {
+  background-color: #d6edfa;
+  cursor: not-allowed;
+}
+
+.action-button:not(:disabled):hover {
+  background-color: #7a62d9;
+}
+
+.info-message {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.separator {
+  border: none;
+  border-top: 2px solid #d6edfa;
+  margin: 3rem 0;
+}
+
+.agenda-info p {
+  margin: 0.3rem 0;
+}

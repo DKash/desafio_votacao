@@ -1,0 +1,69 @@
+.cpf-validator-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.validation-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #1b427e;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.cpf-input {
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #9c7df6;
+  border-radius: 5px;
+  outline-offset: 2px;
+  outline-color: #9c7df6;
+}
+
+.validate-button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #9c7df6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.validate-button:disabled {
+  background-color: #d6edfa;
+  cursor: not-allowed;
+}
+
+.validate-button:not(:disabled):hover {
+  background-color: #7a62d9;
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
